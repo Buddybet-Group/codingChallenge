@@ -1,16 +1,15 @@
-# coding_chal
+# FLUTTER CODING INTERVIEW
 
-A new Flutter project.
+Welcome to the flutter coding challenge. 
+For this task, you will be developing a nationality predicting application, which will allow users to input their name and predict/show the user's probable nationality.
 
-## Getting Started
+It is reccomended to use the API availaible on this website: https://nationalize.io/
+However, you are free to use any other source
 
-This project is a starting point for a Flutter application.
+We have developed a basic flutter application for you. Please ensure that you use *THIS* skeleton code to write your code and do not alter the AppBar Title
 
-A few resources to get you started if this is your first Flutter project:
+Please note the following:
+- Pull the skeleton code on this repository, and make another branch called 'buddyBet' followed by your name (eg: "_buddyBet_Sid_"). 
+- Complete the challenge on your branch, and the same will be considered submitted once you push the code this repository
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ALL THE BEST 
