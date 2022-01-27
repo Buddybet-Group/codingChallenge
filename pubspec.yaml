@@ -13,6 +13,12 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.3
+  stacked: ^2.2.8
+  stacked_services: ^0.8.16
+  get_it: ^7.2.0
+  dio: ^4.0.0
+  retrofit: ^2.0.0
+  pretty_dio_logger: ^1.1.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -22,7 +28,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  build_runner:
+  stacked_generator:
+  retrofit_generator:  
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

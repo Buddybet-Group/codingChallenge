@@ -1,13 +1,14 @@
+import 'package:coding_chal/services/locator.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("BuddyBet Coding Challege"),
+import 'views/dashboard_view.dart';
 
+void main() async{
+    await SetUpLocator();
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DashBoardView()
       )
-    )
-  ));
+    );
 }
-
