@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/domain/entities/country.dart';
+
 @immutable
 class SearchResultModel {
   /// Constructs a search result from the given [country & name].
@@ -25,17 +27,4 @@ class SearchResultModel {
   }
 }
 
-@immutable
-class Country {
-  const Country({required this.countryId, required this.probability});
 
-  final String countryId;
-  final double probability;
-
-  factory Country.fromJson(Map<String, dynamic> json) {
-    return Country(
-      countryId: json['country_id'],
-      probability: json['probability'],
-    );
-  }
-}

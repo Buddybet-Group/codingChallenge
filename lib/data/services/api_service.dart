@@ -12,9 +12,12 @@ class ApiService extends ApiRespository {
   static final Dio _dio = Dio();
 
   @override
-  Future<SearchResultModel> fetchResults() async {
+  Future<SearchResultModel> fetchResults(String name) async {
     try {
-      Response response = await _dio.get(Config.nameSearchURL);
+      Response response =
+          await _dio.get(Config.nameSearchURL, queryParameters: {
+        'name': name,
+      });
 
       if (response.statusCode == 200) {
         return SearchResultModel.fromJson(response.data);
