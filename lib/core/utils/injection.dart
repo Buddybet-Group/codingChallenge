@@ -1,4 +1,5 @@
 import 'package:coding_chal/core/utils/utils.dart';
+import 'package:coding_chal/modules/home/home_controller.dart';
 import 'package:coding_chal/providers/api/nations_api.dart';
 import 'package:coding_chal/providers/repository/nations_repository.dart';
 import 'package:dio/dio.dart';
@@ -19,10 +20,11 @@ void setupInjection({
   Get
     ..put(configuration, permanent: true)
     ..put(stringManager, permanent: true)
-    ..put(_utils, permanent: true)
+    ..put(_utils(), permanent: true)
     ..put(environment, permanent: true)
     ..put(_logger, permanent: true)
     ..put(_dio, permanent: true)
+    ..lazyPut(() => _homeController)
     ..lazyPut(() => _nationsApi)
     ..lazyPut(() => _nationsRepository);
 }
@@ -30,13 +32,20 @@ void setupInjection({
 ///Utilities
 Logger get _logger => Logger();
 
-Utils get _utils => Utils();
+Utils _utils() {
+  Utils utils = Utils();
+  utils.loadJsonIntoMemory();
+  return utils;
+}
 
 Dio get _dio => setupDioRestClient(configuration: Get.find<Configuration>());
 
 NationsApi get _nationsApi => NationsApi(Get.find<Dio>());
 
 NationsRepository get _nationsRepository => NationsRepository();
+
+/// Controllers
+HomeController _homeController = HomeController();
 
 /// Setup function to set up The Dio Based Rest Client Used for API services to make remote API calls
 /// To be used in injection logic only

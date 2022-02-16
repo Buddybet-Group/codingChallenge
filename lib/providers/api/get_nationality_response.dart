@@ -7,18 +7,19 @@ part 'get_nationality_response.g.dart';
 @JsonSerializable()
 class GetNationalityResponse {
   /// Creates new instance
-  GetNationalityResponse({required this.name, required this.country});
+  GetNationalityResponse({required this.name, required this.countries});
 
   /// Converts json to model
   factory GetNationalityResponse.fromJson(Map<String, dynamic> json) =>
       _$GetNationalityResponseFromJson(json);
 
   /// name entered by user
+  @JsonKey(name: 'name')
   final String name;
 
   /// inner country object
   @JsonKey(name: 'country')
-  final List<Country> country;
+  final List<Country> countries;
 
   /// Converts model to json
   Map<String, dynamic> toJson() => _$GetNationalityResponseToJson(this);

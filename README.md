@@ -13,3 +13,19 @@ Please note the following:
 - Complete the challenge on your branch, and the same will be considered submitted once you push the code this repository
 
 ## ALL THE BEST 
+
+### BIG THANKS FOR THE OPPERTUNITY
+
+Notes :
+
+- Provided 2 sample test cases, we can cover everything incl "Injection" ( If we want )
+
+- Errors are handled but not fully tested. ( Time limitation )
+
+- Main focus here is the architecture of the app, UI can be improved.
+
+- To fetch country names, i used internal json file. ( Time limitation )
+
+- Theme and Routes are not implemented.
+
+- Along with theme the hardcoded font sizes / color properties must be removed. ( Again time limitations ) 

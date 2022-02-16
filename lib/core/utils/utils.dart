@@ -1,20 +1,37 @@
 import 'dart:convert';
 
 import 'package:coding_chal/core/values/assets.dart';
+import 'package:coding_chal/providers/api/country.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 /// Utility class for the app
 class Utils {
-  /// Creates new instance of util
-  Utils() {
-    _loadJsonIntoMemory();
+  final Map<String, String> _countries = Map();
+
+  Future<void> loadJsonIntoMemory() async {
+    /// TODO Handle failures
+    try {
+      rootBundle.loadString(Assets().countryNamesPath).then((value) {
+        dynamic data = jsonDecode(value);
+        data.forEach((element) {
+          _countries[element["code"] ?? ""] = element['name'] ?? "";
+        });
+      });
+    } catch (e) {
+      /// Ignore for now
+    }
   }
 
-  Map<String, String> _countries = Map();
+  String? getCountryName(String countryId) {
+    return _countries[countryId];
+  }
 
-  Future<void> _loadJsonIntoMemory() async {
-    String countryData = await rootBundle.loadString(Assets().countryNamesPath);
-    dynamic data = jsonDecode(countryData);
-    print('loaded data : ${data.runtimeType}: $data');
+  Country getHighProbablity(List<Country> countries) {
+    countries.sort(
+      (a, b) {
+        return b.probability > a.probability ? 1 : 0;
+      },
+    );
+    return countries[0];
   }
 }

@@ -1,10 +1,10 @@
 import 'package:coding_chal/core/configurations/configuration.dart';
-import 'package:coding_chal/core/theme/main_theme.dart';
 import 'package:coding_chal/core/utils/injection.dart';
-import 'package:coding_chal/core/values/assets.dart';
 import 'package:coding_chal/core/values/environment.dart';
 import 'package:coding_chal/core/values/string_manager.dart';
+import 'package:coding_chal/modules/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 /// Root of BuddyBet App.
 Widget setupApp({
@@ -18,14 +18,14 @@ Widget setupApp({
     environment: environment,
   );
 
-  return MaterialApp(
-    theme: ThemeData.light().copyWith(
-      textTheme: MainTheme().defaultTextTheme(),
-    ),
+  return GetMaterialApp(
     home: Scaffold(
-      body: Container(
-        color: Colors.red,
+      appBar: AppBar(
+        title: Text(
+          stringManager.appBarTitle,
+        ),
       ),
+      body: const HomeScreen(),
     ),
   );
 }
