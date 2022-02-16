@@ -22,10 +22,10 @@ Notes :
 
 - Errors are handled but not fully tested. ( Time limitation )
 
-- Main focus here is the architecture of the app, UI can be improved.
+- Main focus here, architecture of the app, UI can be improved.
 
 - To fetch country names, i used internal json file. ( Time limitation )
 
 - Theme and Routes are not implemented.
 
-- Along with theme the hardcoded font sizes / color properties must be removed. ( Again time limitations ) 
+- Along with theme implementation, the hardcoded fontSize / color properties will be removed. ( Again time limitations ) 
