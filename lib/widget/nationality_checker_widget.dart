@@ -59,13 +59,10 @@ class _NationalityCheckerWidgetState extends State<NationalityCheckerWidget> {
             child: Consumer<NationalityCheckerViewModel>(builder: (context, viewModel, _) {
               switch (viewModel.nationalityResponse.status) {
                 case Status.loading:
-                  //enableButton.value = false;
                   return const LoadingWidget();
                 case Status.error:
-                  enableButton.value = true;
                   return ErrorMessageWidget(viewModel.nationalityResponse.message ?? '');
                 case Status.completed:
-                  enableButton.value = true;
                   return NationalityResultWidget(viewModel.nationality, Colors.deepOrange, 32);
                 default:
               }
@@ -77,14 +74,21 @@ class _NationalityCheckerWidgetState extends State<NationalityCheckerWidget> {
 
   void _checkNationality(String personName) {
     if (personName.isEmpty) {
-      const snackBar = SnackBar(
-        content: Text('Enter the name'),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      showToastMessage('Enter the name');
     } else {
-      enableButton.value = false;
-      viewModel.fetchNationality(personName);
+      if (viewModel.nationalityResponse.status != Status.loading) {
+        viewModel.fetchNationality(personName);
+      } else {
+        showToastMessage('Please wait..');
+      }
     }
+  }
+
+  void showToastMessage(String message) {
+    var snackBar = SnackBar(
+      content: Text(message),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override

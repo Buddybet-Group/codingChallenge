@@ -12,7 +12,7 @@ class NationalityCheckerViewModel extends ChangeNotifier {
 
   String nationality = '';
 
-  final String _nationalityNotFound = 'No country found';
+  final String _nationalityNotFound = 'Nationality not found';
 
   void _setMovieMain(ApiResponse<NationalityResponse> response) {
     nationalityResponse = response;
