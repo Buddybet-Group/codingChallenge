@@ -10,7 +10,7 @@ class NationalityResultWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      nationality,
+      'Nationality: $nationality',
       style: TextStyle(color: color, fontSize: fontSize),
     );
   }

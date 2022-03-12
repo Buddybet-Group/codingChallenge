@@ -21,7 +21,6 @@ class NationalityCheckerWidget extends StatefulWidget {
 class _NationalityCheckerWidgetState extends State<NationalityCheckerWidget> {
   late TextEditingController nameFieldController;
   late NationalityCheckerViewModel viewModel;
-  ValueNotifier<bool> enableButton = ValueNotifier(false);
 
   @override
   void initState() {
@@ -33,43 +32,44 @@ class _NationalityCheckerWidgetState extends State<NationalityCheckerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomFormField(
-          hintText: 'Enter name',
-          controller: nameFieldController,
-          onChange: (value) {
-            enableButton.value = value?.isNotEmpty ?? false;
-          },
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(
-              RegExp(nameRegEx),
-            )
-          ],
-        ),
-        ValueListenableBuilder<bool>(
-          valueListenable: enableButton,
-          builder: (context, value, child) {
-            return ElevatedButton(
-                onPressed: value ? () => _checkNationality(nameFieldController.text) : null, child: const Text('Check Nationality'));
-          },
-        ),
-        ChangeNotifierProvider<NationalityCheckerViewModel>(
-            create: (BuildContext context) => viewModel,
-            child: Consumer<NationalityCheckerViewModel>(builder: (context, viewModel, _) {
+    return ChangeNotifierProvider<NationalityCheckerViewModel>(
+        create: (BuildContext context) => viewModel,
+        child: Column(
+          children: [
+            CustomFormField(
+              hintText: 'Enter name',
+              controller: nameFieldController,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(
+                  RegExp(nameRegEx),
+                )
+              ],
+            ),
+            Consumer<NationalityCheckerViewModel>(builder: (context, viewModel, _) {
+              return ElevatedButton(
+                  onPressed: enableButton2() ? () => _checkNationality(nameFieldController.text) : null, child: const Text('Check Nationality'));
+            }),
+            const SizedBox(
+              height: 40,
+            ),
+            Consumer<NationalityCheckerViewModel>(builder: (context, viewModel, _) {
               switch (viewModel.nationalityResponse.status) {
                 case Status.loading:
                   return const LoadingWidget();
                 case Status.error:
                   return ErrorMessageWidget(viewModel.nationalityResponse.message ?? '');
                 case Status.completed:
-                  return NationalityResultWidget(viewModel.nationality, Colors.deepOrange, 32);
+                  return NationalityResultWidget(viewModel.nationality, Colors.deepOrange, 22);
                 default:
               }
               return Container();
-            }))
-      ],
-    );
+            })
+          ],
+        ));
+  }
+
+  bool enableButton2() {
+    return viewModel.nationalityResponse.status != Status.loading;
   }
 
   void _checkNationality(String personName) {

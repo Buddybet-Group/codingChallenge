@@ -7,14 +7,13 @@ import 'package:http/http.dart';
 
 class NationalityCheckerViewModel extends ChangeNotifier {
   final _nationalityRepository = NationalityImpl(Client());
-
   ApiResponse<NationalityResponse> nationalityResponse = ApiResponse.none();
 
   String nationality = '';
 
-  final String _nationalityNotFound = 'Nationality not found';
+  final String _nationalityNotFound = 'not found';
 
-  void _setMovieMain(ApiResponse<NationalityResponse> response) {
+  void _setNationalityData(ApiResponse<NationalityResponse> response) {
     nationalityResponse = response;
 
     if (nationalityResponse.data?.country != null && nationalityResponse.data!.country!.isNotEmpty) {
@@ -33,10 +32,10 @@ class NationalityCheckerViewModel extends ChangeNotifier {
   }
 
   Future<void> fetchNationality(String name) async {
-    _setMovieMain(ApiResponse.loading());
+    _setNationalityData(ApiResponse.loading());
     _nationalityRepository
         .getNationality(name)
-        .then((value) => _setMovieMain(ApiResponse.completed(value)))
-        .onError((error, stackTrace) => _setMovieMain(ApiResponse.error(error.toString())));
+        .then((value) => _setNationalityData(ApiResponse.completed(value)))
+        .onError((error, stackTrace) => _setNationalityData(ApiResponse.error(error.toString())));
   }
 }
