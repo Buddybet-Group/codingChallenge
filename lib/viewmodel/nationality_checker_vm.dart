@@ -35,7 +35,7 @@ class NationalityCheckerViewModel extends ChangeNotifier {
   Future<void> fetchNationality(String name) async {
     _setMovieMain(ApiResponse.loading());
     _nationalityRepository
-        .getMoviesList(name)
+        .getNationality(name)
         .then((value) => _setMovieMain(ApiResponse.completed(value)))
         .onError((error, stackTrace) => _setMovieMain(ApiResponse.error(error.toString())));
   }

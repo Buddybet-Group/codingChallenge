@@ -14,7 +14,7 @@ class NationalityImpl implements NationalityRepo {
   }
 
   @override
-  Future<NationalityResponse?> getMoviesList(String name) async {
+  Future<NationalityResponse?> getNationality(String name) async {
     try {
       dynamic response = await _apiService.getResponse('?name=$name');
       final jsonData = NationalityResponse.fromJson(response);
