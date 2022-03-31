@@ -1,13 +1,24 @@
+import 'package:buddybet_assignment/views/splashscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("BuddyBet Coding Challege"),
-
-      )
-    )
-  ));
+  runApp(const MyApp());
 }
 
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'Buddybet',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home:const SplashScreenPage(),
+    );
+  }
+}
