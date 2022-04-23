@@ -1,13 +1,10 @@
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("BuddyBet Coding Challege"),
+import 'src/app/pages/home/home_screen.dart';
 
-      )
-    )
-  ));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CountryCodes.init();
+  runApp(const MaterialApp(home: HomeScreen()));
 }
-
