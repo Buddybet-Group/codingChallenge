@@ -56,7 +56,7 @@ class APIProvider {
         if (response?.statusCode == 200) {
           return response;
         } else {
-          showErrorSnackBar("Please Connect to internet");
+          showErrorSnackBar("Something went wrong.");
         }
       } else {
         showErrorSnackBar("Please Connect to internet");
