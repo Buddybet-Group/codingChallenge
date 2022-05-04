@@ -60,8 +60,9 @@ void main() {
                     ),
                     ListView.builder(
                       itemBuilder: (context, index) => ListTile(
-                        title: Text(value.countries[index]["country_id"]),
-                        subtitle: Text(
+                        title: Text("Nationality: " +
+                            value.countries[index]["country_id"]),
+                        subtitle: Text("Probability: " +
                             value.countries[index]["probability"].toString()),
                       ),
                       itemCount: value.countries.length,
