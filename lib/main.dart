@@ -12,7 +12,7 @@ void main() {
       providers: [ListenableProvider<ViewModel>(create: (_) => ViewModel())],
       child: MaterialApp(
         navigatorKey: App.navigatorState,
-        // debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: Consumer<ViewModel>(
             builder: (context, value, child) => Scaffold(
                 appBar: AppBar(
