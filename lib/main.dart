@@ -1,11 +1,15 @@
-import 'package:coding_chal/UI_screens/Home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'app/dependencies.dart';
+import 'app/routes.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      getPages: Routes.routes,
+      initialBinding: Dependencies(),
     ),
   );
 }
