@@ -1,15 +1,19 @@
 import 'package:coding_chal/home_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("BuddyBet Coding Challege"),
+import 'Screens/prediction_screen.dart';
 
-      ),
-      body: HomePage(),
-    ),
-  ));
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  /// PredictionScreen By Vishal R Gore Tue 19 July 9:50 PM
+  runApp(const PredictionScreen());
+  // runApp(MaterialApp(
+  //   home: Scaffold(
+  //     appBar: AppBar(
+  //       title: Text("BuddyBet Coding Challenge"),
+  //     ),
+  //     body: HomePage(),
+  //   ),
+  // ));
 }
 

@@ -46,8 +46,6 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  // lodaing = true;
-                  // setState(() {});
                   getNationality(_nameController.text.toString())
                       .then((value) => {
                             nationalityMOdel = value,
@@ -59,15 +57,20 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text('Get Nationality')),
             lodaing == false
-                ?const  Center(
+                ? const  Center(
                     child: CircularProgressIndicator(),
                   )
                 : Expanded(
                     child: FutureBuilder(
                     future: getNationality(_nameController.text),
                     builder: (context, snapshot) {
-                      NationalityMOdel obj = snapshot.data as NationalityMOdel;
-                      return Text(obj.country[0].countryId??"NO Data ");
+                      if(snapshot.data != null){
+                        NationalityMOdel obj = snapshot.data as NationalityMOdel;
+                        return Text(obj.country[0].countryId);
+                      }else{
+                        return Container();
+                      }
+
                     },
                   )),
           ],
